@@ -209,7 +209,9 @@ __marimo__/
 # Audio DSP specific
 *.wav
 *.aif
-
+*.aiff
+*.flac
+*.mp3
 
 audio_samples/processed/
 data/
