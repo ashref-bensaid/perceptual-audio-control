@@ -15,3 +15,18 @@ def spectral_centroid_from_magnitude(magnitude, sr, n_fft):
     numerator = np.sum(freqs * magnitude, axis=0)
     denominator = np.sum(magnitude, axis=0) + 1e-10
     return numerator / denominator
+
+
+def compute_centroid(y, sr):
+    centroid = librosa.feature.spectral_centroid(y=y, sr=sr)
+    return centroid.flatten()
+
+
+def compute_bandwidth(y, sr):
+    bandwidth = librosa.feature.spectral_bandwidth(y=y, sr=sr)
+    return bandwidth.flatten()
+
+
+def compute_flatness(y):
+    flatness = librosa.feature.spectral_flatness(y=y)
+    return flatness.flatten()
