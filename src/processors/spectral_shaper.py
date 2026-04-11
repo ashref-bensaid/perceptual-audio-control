@@ -6,7 +6,7 @@ from src.perceptual.analysis import compute_centroid, compute_bandwidth, compute
 from src.control.control import build_descriptor_vector
 from src.control.mapping import build_parameter_vector
 from src.dsp.multi_transform import apply_multiaxis_transform
-
+from src.realtime.max_bridge import send_parameters
 
 class PerceptualSpectralShaper:
 
@@ -59,7 +59,7 @@ class PerceptualSpectralShaper:
         Theta[:,0] = gaussian_filter1d(Theta[:,0], sigma=3)
         Theta[:,1] = gaussian_filter1d(Theta[:,1], sigma=3)
         Theta[:,2] = gaussian_filter1d(Theta[:,2], sigma=3)
-
+        send_parameters(Theta[-1])
         # mode behaviour
         if self.mode == "enhance":
             Theta[:, 0] *= 1.4  # spectral tilt
